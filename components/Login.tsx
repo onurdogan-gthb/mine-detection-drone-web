@@ -34,7 +34,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
 
   return (
     <div className="h-screen flex justify-center items-center">
-      <div className="px-10 py-12 shadow-md rounded bg-window">
+      <div className="px-10 py-12 shadow-md shadow-rust rounded bg-window">
         <div className="my-4 flex justify-center">
           <Image width="128" height="128" alt="" src={icon} />
         </div>

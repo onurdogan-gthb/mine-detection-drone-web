@@ -10,8 +10,8 @@ module.exports = {
     extend: {
       colors: {
         // Backgrounds
-        window: "#FFFFFF", // white
-        background: "#F8F9FA", // gray-100
+        window: "#F8F9FA", // white
+        background: "#181A18", // soft black
         // Texts
         input: "#000000", // black
         default: "#343A40", // gray-900
