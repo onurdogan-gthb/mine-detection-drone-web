@@ -32,7 +32,7 @@ const Coordinates: React.FC = () => {
 
   return (
     <div>
-      <div className="m-8 p-10 shadow-md shadow-rust rounded bg-window">
+      <div className="mr-4 my-8 p-10 shadow-md shadow-rust rounded bg-window">
         <div className="flex justify-center">
           <Image width="64" height="64" alt="" src={location} />
         </div>

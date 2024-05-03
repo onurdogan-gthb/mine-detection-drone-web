@@ -8,6 +8,8 @@ import Coordinates from "@/components/Coordinates";
 import Mines from "@/components/Mines";
 
 import camo from "../assets/camo.jpg";
+import Start from "@/components/Start";
+import Scan from "@/components/Scan";
 
 interface MineCoordinates {
   latitude: number;
@@ -47,19 +49,30 @@ export default function Home() {
       </Head>
 
       <div className="w-full flex  flex-row bg-background  overflow-y-hidden">
-      <aside className="h-screen w-[384px]  relative">
-  <Image src={camo} alt="" className="absolute inset-0 z-0 object-cover" layout="fill" />
-  <div className="absolute inset-0  bg-gradient-to-r from-transparent to-background z-10"></div>
-</aside>
+        <aside className="h-screen w-[384px]  relative">
+          <Image
+            src={camo}
+            alt=""
+            className="absolute inset-0 z-0 object-cover"
+            layout="fill"
+          />
+          <div className="absolute inset-0  bg-gradient-to-r from-transparent to-background z-10"></div>
+        </aside>
 
-
-
-        <main className="mx-[256px] flex justify-center">
-          <div >
+        <main className="mx-[256px] justify-center">
+          <div>
             {isLoggedIn ? (
               <>
-                <Coordinates />
-                <Mines addCoordinate={() => coordinates} />
+                <div className="flex">
+                  <div>
+                    <Scan />
+                    <Coordinates />
+                    <Start />
+                  </div>
+                  <div className="flex">
+                    <Mines addCoordinate={() => coordinates} />
+                  </div>
+                </div>
               </>
             ) : (
               <Login onLogin={handleLogin} />
@@ -68,9 +81,14 @@ export default function Home() {
         </main>
 
         <aside className="h-screen w-[384px] relative">
-  <Image src={camo} alt="" className="absolute inset-0 z-0 object-cover" layout="fill" />
-  <div className="absolute inset-0 bg-gradient-to-l from-transparent to-background z-10"></div>
-</aside>
+          <Image
+            src={camo}
+            alt=""
+            className="absolute inset-0 z-0 object-cover"
+            layout="fill"
+          />
+          <div className="absolute inset-0 bg-gradient-to-l from-transparent to-background z-10"></div>
+        </aside>
       </div>
     </>
   );
