@@ -7,7 +7,7 @@ import Login from "@/components/Login";
 import Coordinates from "@/components/Coordinates";
 import Mines from "@/components/Mines";
 
-import camo from "../assets/camo.jpg";
+import camo from "../assets/camo.png";
 import Start from "@/components/Start";
 import Scan from "@/components/Scan";
 
@@ -48,15 +48,15 @@ export default function Home() {
         <title>Mine Detection Drone UI</title>
       </Head>
 
-      <div className="w-full flex  flex-row bg-background  overflow-y-hidden">
-        <aside className="h-screen w-[384px]  relative">
+      <div className="w-full flex bg-repeat-y flex-row bg-background  overflow-y-hidden">
+        <aside className="w-[384px] bg-repeat-y relative">
           <Image
             src={camo}
             alt=""
-            className="absolute inset-0 z-0 object-cover"
+            className="absolute bg-repeat-y inset-0 z-0 object-cover"
             layout="fill"
           />
-          <div className="absolute inset-0  bg-gradient-to-r from-transparent to-background z-10"></div>
+          <div className="absolute inset-0 bg-repeat-y bg-gradient-to-r from-transparent to-background z-10"></div>
         </aside>
 
         <main className="mx-[256px] justify-center">
@@ -80,14 +80,14 @@ export default function Home() {
           </div>
         </main>
 
-        <aside className="h-screen w-[384px] relative">
+        <aside className=" w-[384px] bg-repeat-y relative">
           <Image
             src={camo}
             alt=""
-            className="absolute inset-0 z-0 object-cover"
+            className="absolute bg-repeat-y inset-0 z-0 object-cover"
             layout="fill"
           />
-          <div className="absolute inset-0 bg-gradient-to-l from-transparent to-background z-10"></div>
+          <div className="absolute bg-repeat-y inset-0 bg-gradient-to-l from-transparent to-background z-10"></div>
         </aside>
       </div>
     </>
