@@ -13,6 +13,7 @@ const FlightTime: React.FC = () => {
         const response = await axios.get(
           "http://localhost:5000/send-flight-time",
         );
+
         setFlightTime(response.data.flight_time);
       } catch (error) {
         console.error("Error fetching flight time: ", error);
@@ -34,14 +35,16 @@ const FlightTime: React.FC = () => {
   };
 
   return (
-    <div className="mr-4 my-8 p-4 shadow-md shadow-rust rounded bg-window">
-      <div className="flex justify-center items-center  px-8 py-3 text-2xl font-bold">
+    <div className="my-8 mr-4 p-4 shadow-md shadow-rust rounded bg-window">
+      <div className="py-3 px-8 flex justify-center items-center text-2xl font-bold">
         <p className="">Flight Time</p>
       </div>
+
       <div className="flex justify-center">
         <Image width="64" height="64" alt="" src={stopwatch} />
       </div>
-      <div className="flex justify-center items-center  px-8 py-3  font-semibold">
+
+      <div className="py-3 px-8 flex justify-center items-center font-semibold">
         {flightTime !== null ? (
           <p>Flight Time: {formatTime(flightTime)}</p>
         ) : (

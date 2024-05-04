@@ -16,15 +16,16 @@ const Coordinates: React.FC = () => {
     const fetchCoordinates = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/send-coordinates", // URL
+          "http://localhost:5000/send-coordinates",
         );
+        
         setCoordinates(response.data.last_coordinates);
       } catch (error) {
         console.error("Error fetching coordinates: ", error);
       }
     };
 
-    const interval = setInterval(fetchCoordinates, 1000); // 1000 milliseconds = 1 second
+    const interval = setInterval(fetchCoordinates, 1000);
     fetchCoordinates();
 
     return () => clearInterval(interval);
@@ -32,12 +33,12 @@ const Coordinates: React.FC = () => {
 
   return (
     <div>
-      <div className="mr-4 my-8 p-10 shadow-md shadow-rust rounded bg-window">
+      <div className="my-8 mr-4 p-10 shadow-md shadow-rust rounded bg-window">
         <div className="flex justify-center">
           <Image width="64" height="64" alt="" src={location} />
         </div>
 
-        <div className="flex justify-center items-center mt-4 px-8 py-3 text-2xl font-bold">
+        <div className="mt-4 py-3 px-8 flex justify-center items-center text-2xl font-bold">
           <p className="text-chrome">Current</p>&nbsp;<p>Location</p>
         </div>
 
@@ -58,7 +59,7 @@ const Coordinates: React.FC = () => {
             </div>
           </div>
         ) : (
-          <p className="flex my-8 justify-center items-center text-xl font-semibold">
+          <p className="my-8 flex justify-center items-center text-xl font-semibold">
             Loading...
           </p>
         )}

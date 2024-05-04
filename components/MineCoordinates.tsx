@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-
 import Image from "next/image";
+
 import mine from "../assets/mine.png";
 
 interface MineCoordinates {
@@ -8,15 +8,15 @@ interface MineCoordinates {
   longitude: number;
 }
 
-const Mines: React.FC<{ addCoordinate: () => MineCoordinates | null }> = ({
-  addCoordinate,
+const MineCoordinates: React.FC<{ addMineCoordinates: () => MineCoordinates | null }> = ({
+  addMineCoordinates,
 }) => {
-  const [coordinatesList, setCoordinatesList] = useState<MineCoordinates[]>([]);
+  const [mineCoordinatesList, setMineCoordinatesList] = useState<MineCoordinates[]>([]);
 
   const handleClick = () => {
-    const newCoordinate = addCoordinate();
-    if (newCoordinate) {
-      setCoordinatesList((prevList) => [...prevList, newCoordinate]);
+    const newMineCoordinates = addMineCoordinates();
+    if (newMineCoordinates) {
+      setMineCoordinatesList((prevList) => [...prevList, newMineCoordinates]);
     }
   };
 
@@ -39,9 +39,9 @@ const Mines: React.FC<{ addCoordinate: () => MineCoordinates | null }> = ({
         </button>
       </div>
       <ul>
-        {coordinatesList.map((coordinate, index) => (
+        {mineCoordinatesList.map((coordinates, index) => (
           <li key={index} className="text-center">
-            Latitude: {coordinate.latitude}, Longitude: {coordinate.longitude}
+            Latitude: {coordinates.latitude}, Longitude: {coordinates.longitude}
           </li>
         ))}
       </ul>
@@ -49,4 +49,4 @@ const Mines: React.FC<{ addCoordinate: () => MineCoordinates | null }> = ({
   );
 };
 
-export default Mines;
+export default MineCoordinates;

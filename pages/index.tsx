@@ -1,43 +1,44 @@
 import React, { useState, useEffect } from "react";
 import Head from "next/head";
-import axios from "axios";
 import Image from "next/image";
+import axios from "axios";
 
 import Login from "@/components/Login";
+import FlightTime from "@/components/FlightTime";
 import Coordinates from "@/components/Coordinates";
-import Mines from "@/components/Mines";
+import MineCoordinates from "@/components/MineCoordinates";
+import MineDetection from "@/components/MineDetection";
 
 import camo from "../assets/camo.png";
-import MineDetection from "@/components/MineDetection";
-import FlightTime from "@/components/FlightTime";
 
-interface MineCoordinates {
+interface BufferCoordinates {
   latitude: number;
   longitude: number;
 }
 
 export default function Home() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [coordinates, setCoordinates] = useState<MineCoordinates | null>(null);
+  const [bufferCoordinates, setBufferCoordinates] = useState<BufferCoordinates | null>(null);
 
   const handleLogin = () => {
     setIsLoggedIn(true);
   };
 
   useEffect(() => {
-    const fetchCoordinates = async () => {
+    const fetchBufferCoordinates = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/send-coordinates", // URL
+          "http://localhost:5000/send-coordinates",
         );
-        setCoordinates(response.data.last_coordinates);
+
+        setBufferCoordinates(response.data.last_coordinates);
       } catch (error) {
         console.error("Error fetching coordinates: ", error);
       }
     };
 
-    const interval = setInterval(fetchCoordinates, 1000); // 1000 milliseconds = 1 second
-    fetchCoordinates();
+    const interval = setInterval(fetchBufferCoordinates, 1000);
+    fetchBufferCoordinates();
 
     return () => clearInterval(interval);
   }, []);
@@ -48,15 +49,15 @@ export default function Home() {
         <title>Mine Detection Drone UI</title>
       </Head>
 
-      <div className="w-full flex bg-repeat-y flex-row bg-background  overflow-y-hidden">
-        <aside className="w-[384px] bg-repeat-y relative">
+      <div className="overflow-y-hidden w-full bg-repeat-y bg-background flex flex-row">
+        <aside className="relative w-[384px] bg-repeat-y">
           <Image
             src={camo}
-            alt=""
-            className="absolute bg-repeat-y inset-0 z-0 object-cover"
+            className="absolute z-0 inset-0 bg-repeat-y object-cover"
             layout="fill"
+            alt=""
           />
-          <div className="absolute inset-0 bg-repeat-y bg-gradient-to-r from-transparent to-background z-10"></div>
+          <div className="absolute z-10 inset-0 bg-repeat-y bg-gradient-to-r from-transparent to-background"></div>
         </aside>
 
         <main className="mx-[256px] justify-center">
@@ -70,7 +71,7 @@ export default function Home() {
                     <FlightTime />
                   </div>
                   <div className="flex">
-                    <Mines addCoordinate={() => coordinates} />
+                    <MineCoordinates addMineCoordinates={() => bufferCoordinates} />
                   </div>
                 </div>
               </>
@@ -80,14 +81,14 @@ export default function Home() {
           </div>
         </main>
 
-        <aside className=" w-[384px] bg-repeat-y relative">
+        <aside className="relative w-[384px] bg-repeat-y">
           <Image
             src={camo}
-            alt=""
-            className="absolute bg-repeat-y inset-0 z-0 object-cover"
+            className="absolute z-0 inset-0 bg-repeat-y object-cover"
             layout="fill"
+            alt=""
           />
-          <div className="absolute bg-repeat-y inset-0 bg-gradient-to-l from-transparent to-background z-10"></div>
+          <div className="absolute z-10 inset-0 bg-repeat-y bg-gradient-to-l from-transparent to-background"></div>
         </aside>
       </div>
     </>
