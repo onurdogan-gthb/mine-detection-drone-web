@@ -8,8 +8,8 @@ import Coordinates from "@/components/Coordinates";
 import Mines from "@/components/Mines";
 
 import camo from "../assets/camo.png";
-import Start from "@/components/Start";
-import Scan from "@/components/Scan";
+import MineDetection from "@/components/MineDetection";
+import FlightTime from "@/components/FlightTime";
 
 interface MineCoordinates {
   latitude: number;
@@ -65,9 +65,9 @@ export default function Home() {
               <>
                 <div className="flex">
                   <div>
-                    <Scan />
+                    <MineDetection />
                     <Coordinates />
-                    <Start />
+                    <FlightTime />
                   </div>
                   <div className="flex">
                     <Mines addCoordinate={() => coordinates} />

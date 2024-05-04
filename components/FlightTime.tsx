@@ -4,7 +4,7 @@ import axios from "axios";
 
 import stopwatch from "../assets/stopwatch.png";
 
-const Start: React.FC = () => {
+const FlightTime: React.FC = () => {
   const [flightTime, setFlightTime] = useState<number | null>(null);
 
   useEffect(() => {
@@ -52,4 +52,4 @@ const Start: React.FC = () => {
   );
 };
 
-export default Start;
+export default FlightTime;
