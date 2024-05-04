@@ -11,7 +11,7 @@ const Scan: React.FC = () => {
     const fetchScan = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/send-scan", // URL
+          "http://localhost:5000/send-mine-detection", // URL
         );
         setScan(response.data.scan);
       } catch (error) {
