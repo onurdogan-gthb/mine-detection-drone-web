@@ -3,11 +3,13 @@ import Head from "next/head";
 import Image from "next/image";
 import axios from "axios";
 
-import Login from "@/components/Login";
-import FlightTime from "@/components/FlightTime";
+import BatteryLevel from "@/components/BatteryLevel";
 import Coordinates from "@/components/Coordinates";
+import FlightTime from "@/components/FlightTime";
+import Login from "@/components/Login";
 import MineCoordinates from "@/components/MineCoordinates";
 import MineDetection from "@/components/MineDetection";
+import RotorsStates from "@/components/RotorsStates";
 
 import camo from "../assets/camo.png";
 
@@ -49,46 +51,48 @@ export default function Home() {
         <title>Mine Detection Drone UI</title>
       </Head>
 
-      <div className="overflow-y-hidden w-full bg-repeat-y bg-background flex flex-row">
-        <aside className="relative w-[384px] bg-repeat-y">
+      <div className="overflow-hidden w-full flex">
+        <aside className="relative w-[384px] bg-repeat-y bg-gradient-to-r from-transparent to-background">
           <Image
             src={camo}
-            className="absolute z-0 inset-0 bg-repeat-y object-cover"
+            className="absolute z-0 inset-0 object-cover"
             layout="fill"
             alt=""
           />
-          <div className="absolute z-10 inset-0 bg-repeat-y bg-gradient-to-r from-transparent to-background"></div>
+          <div className="absolute z-10 inset-0 bg-gradient-to-r from-transparent to-background"></div>
         </aside>
 
-        <main className="mx-[256px] justify-center">
-          <div>
-            {isLoggedIn ? (
-              <>
-                <div className="flex">
-                  <div>
-                    <MineDetection />
-                    <Coordinates />
-                    <FlightTime />
-                  </div>
-                  <div className="flex">
-                    <MineCoordinates addMineCoordinates={() => bufferCoordinates} />
-                  </div>
-                </div>
-              </>
-            ) : (
-              <Login onLogin={handleLogin} />
-            )}
-          </div>
+        <main className="flex-1 flex justify-center">
+          {isLoggedIn ? (
+            <div className="flex">
+              <div className="mr-4">
+                <MineDetection />
+                <Coordinates />
+                <FlightTime />
+              </div>
+
+              <div className="mr-4 flex">
+                <MineCoordinates addMineCoordinates={() => bufferCoordinates} />
+              </div>
+
+              <div>
+                <RotorsStates />
+                <BatteryLevel />
+              </div>
+            </div>
+          ) : (
+            <Login onLogin={handleLogin} />
+          )}
         </main>
 
-        <aside className="relative w-[384px] bg-repeat-y">
+        <aside className="relative w-[384px] bg-repeat-y bg-gradient-to-l from-transparent to-background">
           <Image
             src={camo}
-            className="absolute z-0 inset-0 bg-repeat-y object-cover"
+            className="absolute z-0 inset-0 object-cover"
             layout="fill"
             alt=""
           />
-          <div className="absolute z-10 inset-0 bg-repeat-y bg-gradient-to-l from-transparent to-background"></div>
+          <div className="absolute z-10 inset-0 bg-gradient-to-l from-transparent to-background"></div>
         </aside>
       </div>
     </>

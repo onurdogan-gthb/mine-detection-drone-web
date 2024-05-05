@@ -21,7 +21,7 @@ const MineCoordinates: React.FC<{ addMineCoordinates: () => MineCoordinates | nu
   };
 
   return (
-    <div className=" w-[512px] ml-4 my-8 p-8 rounded bg-window shadow-md shadow-rust">
+    <div className=" w-[512px] ml-4 my-8 p-6 rounded bg-window shadow-md shadow-rust">
       <div className="flex justify-center mt-8 mb-12">
         <Image width="64" height="64" alt="" src={mine} />
 
@@ -29,6 +29,7 @@ const MineCoordinates: React.FC<{ addMineCoordinates: () => MineCoordinates | nu
           <p className="text-chrome">Found</p>&nbsp;<p>Mines</p>
         </div>
       </div>
+
       <div className="flex justify-center items-center">
         <button
           className="mb-8 px-36 py-3 rounded bg-rust hover:bg-metal font-semibold text-lg text-white"
@@ -38,6 +39,7 @@ const MineCoordinates: React.FC<{ addMineCoordinates: () => MineCoordinates | nu
           Add Location
         </button>
       </div>
+      
       <ul>
         {mineCoordinatesList.map((coordinates, index) => (
           <li key={index} className="text-center">
