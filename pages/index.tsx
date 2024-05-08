@@ -5,6 +5,7 @@ import axios from "axios";
 
 import BatteryLevel from "@/components/BatteryLevel";
 import Coordinates from "@/components/Coordinates";
+import DroneHeight from "@/components/DroneHeight";
 import FlightTime from "@/components/FlightTime";
 import Login from "@/components/Login";
 import MineCoordinates from "@/components/MineCoordinates";
@@ -77,6 +78,7 @@ export default function Home() {
 
               <div>
                 <RotorsStates />
+                <DroneHeight />
                 <BatteryLevel />
               </div>
             </div>

@@ -31,9 +31,9 @@ const BatteryLevel: React.FC = () => {
       <div className="mt-4 mb-2 flex justify-center">
         <Image width="64" height="64" alt="" src={battery} />
         {batteryLevel !== null ? (
-          <p className="mt-4 ml-4 font-semibold">{batteryLevel}%</p>
+          <p className="mt-5 ml-4 font-semibold">{batteryLevel}%</p>
         ) : (
-          <p className="mt-4 ml-4 font-semibold">Loading...</p>
+          <p className="mt-5 ml-4 font-semibold">Loading...</p>
         )}
       </div>
     </div>
