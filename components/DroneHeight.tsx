@@ -27,7 +27,7 @@ const DroneHeight: React.FC = () => {
   }, []);
 
   return (
-    <div className="my-8 ml-8 p-4 shadow-md shadow-rust rounded bg-window">
+    <div className="my-8 ml-8 px-28 py-10 shadow-md shadow-rust rounded bg-window">
       <div className="mt-4 mb-2 flex justify-center">
         <Image width="64" height="64" alt="" src={drone_height} />
         {droneHeight !== null ? (

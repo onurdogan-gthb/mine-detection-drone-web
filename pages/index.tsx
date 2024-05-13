@@ -69,7 +69,6 @@ export default function Home() {
               <div className="mr-4">
                 <MineDetection />
                 <Coordinates />
-                <FlightTime />
               </div>
 
               <div className="mr-4 flex">
@@ -77,9 +76,8 @@ export default function Home() {
               </div>
 
               <div>
-                <RotorsStates />
+                <FlightTime />
                 <DroneHeight />
-                <BatteryLevel />
               </div>
             </div>
           ) : (

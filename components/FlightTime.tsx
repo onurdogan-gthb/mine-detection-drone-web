@@ -35,7 +35,7 @@ const FlightTime: React.FC = () => {
   };
 
   return (
-    <div className="my-8 mr-4 p-4 shadow-md shadow-rust rounded bg-window">
+    <div className="my-8 ml-8 p-4 shadow-md shadow-rust rounded bg-window">
       <div className="py-3 px-8 flex justify-center items-center text-2xl font-bold">
         <p className="">Flight Time</p>
       </div>
