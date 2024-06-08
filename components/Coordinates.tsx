@@ -3,7 +3,6 @@ import Image from "next/image";
 import axios from "axios";
 
 import location from "../assets/location.png";
-
 interface Coordinates {
   latitude: number;
   longitude: number;
@@ -19,7 +18,7 @@ const Coordinates: React.FC = () => {
           "http://localhost:5000/send-coordinates",
         );
         
-        setCoordinates(response.data.last_coordinates);
+        setCoordinates(response.data.coordinates); // Set coordinates directly from response data
       } catch (error) {
         console.error("Error fetching coordinates: ", error);
       }
@@ -32,40 +31,41 @@ const Coordinates: React.FC = () => {
   }, []);
 
   return (
-    <div>
-      <div className="my-8 mr-4 p-10 shadow-md shadow-rust rounded bg-window">
-        <div className="flex justify-center">
-          <Image width="64" height="64" alt="" src={location} />
-        </div>
+  <div>
+    <div className="my-8 mr-4 p-10 shadow-md shadow-rust rounded bg-window">
+      <div className="flex justify-center">
+        <Image width="64" height="64" alt="" src={location} />
+      </div>
 
-        <div className="mt-4 py-3 px-8 flex justify-center items-center text-2xl font-bold">
-          <p className="text-chrome">Current</p>&nbsp;<p>Location</p>
-        </div>
+      <div className="mt-4 py-3 px-8 flex justify-center items-center text-2xl font-bold">
+        <p className="text-chrome">Current</p>&nbsp;<p>Location</p>
+      </div>
 
-        {coordinates ? (
-          <div className="mx-8">
-            <div className="flex">
-              <p className="font-semibold">Latitude</p>
-              <div className="ml-auto">
-                <p>{coordinates.latitude}</p>
-              </div>
-            </div>
-
-            <div className="flex">
-              <p className="font-semibold">Longitude</p>
-              <div className="ml-auto">
-                <p>{coordinates.longitude}</p>
-              </div>
+      {coordinates ? (
+        <div className="mx-8">
+          <div className="flex">
+            <p className="font-semibold">Latitude</p>
+            <div className="ml-auto">
+              <p>{coordinates.longitude}</p>
             </div>
           </div>
-        ) : (
-          <p className="my-8 flex justify-center items-center text-xl font-semibold">
-            Loading...
-          </p>
-        )}
-      </div>
+
+          <div className="flex">
+            <p className="font-semibold">Longitude</p>
+            <div className="ml-auto">
+              <p>{coordinates.latitude}</p>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <p className="my-8 flex justify-center items-center text-xl font-semibold">
+          Loading...
+        </p>
+      )}
     </div>
-  );
+  </div>
+);
+
 };
 
 export default Coordinates;

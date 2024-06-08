@@ -10,17 +10,16 @@ const DroneHeight: React.FC = () => {
   useEffect(() => {
     const fetchDroneHeight = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:5000/send-drone-height",
-        );
+        const response = await axios.get("http://localhost:5000/send-drone-height");
+        console.log("Response data:", response.data); // Add this line for debugging
 
-        setDroneHeight(response.data.drone_height);
+        setDroneHeight(response.data.distance);
       } catch (error) {
         console.error("Error fetching drone height: ", error);
       }
     };
 
-    const interval = setInterval(fetchDroneHeight, 1000);
+    const interval = setInterval(fetchDroneHeight, 1000); // Fetch every second
     fetchDroneHeight();
 
     return () => clearInterval(interval);
@@ -28,12 +27,12 @@ const DroneHeight: React.FC = () => {
 
   return (
     <div className="my-8 ml-8 px-28 py-10 shadow-md shadow-rust rounded bg-window">
-      <div className="mt-4 mb-2 flex justify-center">
+      <div className="mt-4 mb-2 justify-center">
         <Image width="64" height="64" alt="" src={drone_height} />
         {droneHeight !== null ? (
-          <p className="mt-4 ml-4 font-semibold">{droneHeight}m</p>
+          <p className="ml-1 mt-4 mr-4 font-semibold">{droneHeight}cm</p>
         ) : (
-          <p className="mt-4 ml-4 font-semibold">Loading...</p>
+          <p className="mt-4 mr-4 font-semibold">Loading...</p>
         )}
       </div>
     </div>

@@ -13,6 +13,7 @@ import MineDetection from "@/components/MineDetection";
 import RotorsStates from "@/components/RotorsStates";
 
 import camo from "../assets/camo.png";
+import amblem from "../assets/icon.png";
 
 interface BufferCoordinates {
   latitude: number;
@@ -69,6 +70,7 @@ export default function Home() {
               <div className="mr-4">
                 <MineDetection />
                 <Coordinates />
+                <FlightTime />
               </div>
 
               <div className="mr-4 flex">
@@ -76,8 +78,18 @@ export default function Home() {
               </div>
 
               <div>
-                <FlightTime />
                 <DroneHeight />
+                <BatteryLevel />
+                <div className="ml-[50px]">
+                  <Image
+                  src={amblem}
+                  className=""
+                  alt=""
+                  width="256" height="256"
+                  />
+                  <div className="flex">
+                  <p className="font-semibold text-2xl ">Mine Detection Drone UI</p></div>
+                </div>
               </div>
             </div>
           ) : (
